@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { EaseInLine } from "./EaseInLine";
 import { Roll } from "react-awesome-reveal";
 
-export const SplashScreen = ({ children, splashText }: { children: React.ReactNode, splashText:string|null }) => {
+export const SplashScreen = ({ children, splashText, backgroundColor, textColor }: { children: React.ReactNode, splashText?:string, backgroundColor?:string, textColor?:string}) => {
   const [windowWidth, setWindowWidth] = useState(0);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [unmountTrash, setUnmountTrash] = useState(false);
@@ -39,6 +39,7 @@ export const SplashScreen = ({ children, splashText }: { children: React.ReactNo
               stiffness: 180,
             },
           }}
+          style={{backgroundColor:backgroundColor}}
           className="h-screen w-screen absolute top-0 left-0 bg-black flex content-center items-center justify-center z-[100]"
         >
           <motion.div
@@ -55,7 +56,7 @@ export const SplashScreen = ({ children, splashText }: { children: React.ReactNo
             }}
           >
             <Roll>
-              <h1 className="text-center sm:text-6xl text-4xl font-bold text-white">{splashText}</h1>
+              <h1 style={{color:textColor}} className="text-center sm:text-6xl text-4xl font-bold text-white">{splashText}</h1>
             </Roll>
           </motion.div>
         </motion.div>

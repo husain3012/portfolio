@@ -17,11 +17,13 @@ import {
   AiOutlineMail,
 } from "react-icons/ai";
 import Link from "next/link";
+import Head from "next/head";
 const Home = () => {
   const isBigScreen = useMediaQuery({ query: "(min-width: 1024px)" });
   return (
     <div>
-      <SplashScreen splashText="Hi!">
+     
+      <SplashScreen splashText="Hi!" backgroundColor="#212121" >
         {/* <Navbar /> */}
         <SmoothScroll active={isBigScreen}>
           <OddSection
@@ -41,7 +43,7 @@ const Home = () => {
               frameworks.
 
             </p> */}
-            <p className="text-black">
+            <p className="text-white md:text-gray-800">
               <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
                 Next.js
               </a>
@@ -141,21 +143,21 @@ const Home = () => {
               or want to work with me, feel free to contact me.
             </p>
             <br />
-            <div className="flex flex-row space-x-4">
+            <div className="flex flex-row space-x-4 justify-center">
               <Link href="mailto:husainshahidrao@gmail.com">
-                <a className="text-white bg-black p-2 rounded-md">
+                <a className="text-white bg-black p-2  text-center">
                   <AiOutlineMail  size={24} className="inline-block mr-2" />
                   Gmail
                 </a>
               </Link>
               <Link href="https://www.linkedin.com/in/husain3012/">
-                <a className="text-white bg-black p-2 rounded-md">
+                <a className="text-white bg-black p-2  text-center">
                   <AiOutlineLinkedin size={24} className="inline-block mr-2" />
                   LinkedIn
                 </a>
               </Link>
               <Link href="https://www.github.com/husain3012">
-                <a className="text-white bg-black p-2 rounded-md">
+                <a className="text-white bg-black p-2  text-center">
                   <AiOutlineGithub size={24} className="inline-block mr-2" />
                   GitHub
                 </a>

@@ -33,14 +33,14 @@ export const SectionOddSm = ({
                 </h1>
               </Slide>
               <Fade className="mx-auto mt-auto mb-20">
-                <div className="group  text-gray-400 p-3 text-lg max-w-sm text-justify bg-black bg-opacity-40">
-                  {content && (
+                {(content || children) && (
+                  <div className="group  text-gray-400 p-3 text-lg max-w-sm bg-black bg-opacity-40">
                     <div className="m-3 group-hover:scale-110 transition-all border-[1px] border-gray-400 p-3">
                       {content}
+                      {children}
                     </div>
-                  )}
-                  {children}
-                </div>
+                  </div>
+                )}
               </Fade>
             </div>
           ),
@@ -77,11 +77,10 @@ export const SectionOddLg = ({
           </Fade>
           <Fade triggerOnce>
             <Slide direction="up">
-              <p className="text-gray-300 max-w-md text-lg  my-12">
-                {" "}
-                {content}
-              </p>
-              <div className="flex flex-col items-center max-w-md">{children}</div>
+              <p className="text-gray-300 max-w-md text-lg  my-12">{content}</p>
+              <div className="flex flex-col items-center max-w-md">
+                {children}
+              </div>
             </Slide>
           </Fade>
         </div>
