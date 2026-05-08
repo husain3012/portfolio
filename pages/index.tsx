@@ -86,12 +86,12 @@ export default function HomePage({
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <motion.div whileHover={shouldReduceMotion ? undefined : { y: -2 }} whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
+            <motion.div whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
               <Link href="/projects" className="action-link">
                 Browse Projects
               </Link>
             </motion.div>
-            <motion.div whileHover={shouldReduceMotion ? undefined : { y: -2 }} whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
+            <motion.div whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}>
               <Link href="/research" className="muted-link">
                 Read Research
               </Link>
@@ -102,7 +102,6 @@ export default function HomePage({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="muted-link"
-                whileHover={shouldReduceMotion ? undefined : { y: -2 }}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
               >
                 Download Resume

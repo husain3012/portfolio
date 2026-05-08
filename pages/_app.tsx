@@ -4,6 +4,8 @@ import { ParallaxProvider } from "react-scroll-parallax";
 import Head from "next/head";
 import { IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
 
+import FirstVisitSplash from "../components/site/FirstVisitSplash";
+
 const displayFont = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
@@ -24,7 +26,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="description"
           content="Technical portfolio powered by Sanity CMS with projects, research papers, links, and resume content."
         />
-        <meta name="theme-color" content="#050816" />
         <meta property="og:title" content="Husain Shahid Rao" />
         <meta
           property="og:description"
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta property="og:type" content="website" />
       </Head>
       <div className={`${displayFont.variable} ${bodyFont.variable}`}>
-        <Component {...pageProps} />
+        <FirstVisitSplash>
+          <Component {...pageProps} />
+        </FirstVisitSplash>
       </div>
     </ParallaxProvider>
   );
