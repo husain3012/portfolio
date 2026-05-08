@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { motion, m, useViewportScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { ParallaxBanner } from "react-scroll-parallax";
 import { Slide, Fade, JackInTheBox, Zoom } from "react-awesome-reveal";
 import { useMediaQuery } from "react-responsive";

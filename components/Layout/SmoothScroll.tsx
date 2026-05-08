@@ -4,7 +4,7 @@ import { setTransform, setStyles, updateElements, createBlock, reCalculateBlocks
 export const ScrollContext = React.createContext({});
 
 export default (props: {
-  children: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined;
+  children: React.ReactNode;
   active: boolean | null | undefined;
 }) => {
   const spacer = useRef(null);

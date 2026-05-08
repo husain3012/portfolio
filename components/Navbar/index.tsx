@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { useViewportScroll, motion, motionValue } from "framer-motion";
+import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 
 const navItems = [
 
@@ -19,13 +19,12 @@ const navItems = [
 ];
 
 const Navbar = () => {
-  const { scrollYProgress } = useViewportScroll();
+  const { scrollYProgress } = useScroll();
   const [opacityState, setOpacityState] = React.useState(0);
-  scrollYProgress.onChange((value) => {
-    value = parseFloat(value.toFixed(3));
-
-    if (opacityState === Math.min(value, 0.2) * 4.2) return;
-    setOpacityState(Math.min(value, 0.2) * 4.2);
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    const rounded = parseFloat(value.toFixed(3));
+    const opacity = Math.min(rounded, 0.2) * 4.2;
+    setOpacityState(opacity);
   });
 
   return (
@@ -37,10 +36,8 @@ const Navbar = () => {
         </div>
         <div className="flex gap-1 sm:gap-4 items-stretch sm:mr-12 mr-4">
           {navItems.map((item) => (
-            <Link href={item.path} key={item.name}>
-              <div className="flex items-center">
-                <a className="text-white text-lg px-1">{item.name}</a>
-              </div>
+            <Link href={item.path} key={item.name} className="flex items-center">
+              <span className="text-white text-lg px-1">{item.name}</span>
             </Link>
           ))}
         </div>
