@@ -31,13 +31,13 @@ export default function LinksPage({
   }, {});
 
   return (
-    <SiteLayout title="Links" description="Curated links managed with Sanity CMS.">
+    <SiteLayout title="Links" description="Public links and profiles.">
       <section className="space-y-6">
         <div>
           <p className="eyebrow">Links</p>
           <h1 className="section-heading">Profiles, references, and public writing</h1>
           <p className="section-copy">
-            Resource links are stored as structured documents so categories and featured placement stay easy to manage in the CMS.
+            Public links grouped by category.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export default function LinksPage({
                   {items.map((item) => (
                     <ContentCard
                       key={item._id}
-                      eyebrow={item.featured ? "Featured Link" : "Resource Link"}
+                      eyebrow={item.featured ? "Featured" : "Link"}
                       title={item.title}
                       description={item.description}
                       href={item.url}
@@ -63,7 +63,7 @@ export default function LinksPage({
         ) : (
           <EmptyState
             title="Links will appear here"
-            description="Publish resourceLink documents in Sanity Studio to build your public link index."
+            description="Add links in Sanity Studio and they will appear here."
           />
         )}
       </section>

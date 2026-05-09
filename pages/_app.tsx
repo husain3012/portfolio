@@ -24,12 +24,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Husain Shahid Rao</title>
         <meta
           name="description"
-          content="Technical portfolio powered by Sanity CMS with projects, research papers, links, and resume content."
+          content="Portfolio with projects, research, links, and resume content."
         />
         <meta property="og:title" content="Husain Shahid Rao" />
         <meta
           property="og:description"
-          content="Technical portfolio powered by Sanity CMS with projects, research papers, links, and resume content."
+          content="Portfolio with projects, research, links, and resume content."
         />
         <meta property="og:url" content="https://husain.vercel.app/" />
         <meta property="og:type" content="website" />

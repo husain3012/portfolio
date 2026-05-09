@@ -108,6 +108,46 @@ export interface LeetCodeStats {
   totalSubmissions: number;
 }
 
+export interface LastFmArtistSummary {
+  name: string;
+  url: string;
+  playcount: number;
+}
+
+export interface LastFmTrackSummary {
+  name: string;
+  artist: string;
+  url: string;
+  playcount: number;
+}
+
+export interface LastFmStats {
+  username: string;
+  profileUrl: string;
+  playcount: number;
+  topArtists: LastFmArtistSummary[];
+  topTracks: LastFmTrackSummary[];
+}
+
+export interface SteamGameSummary {
+  appId: number;
+  name: string;
+  playtimeForeverHours: number;
+  playtimeTwoWeeksHours?: number;
+  iconUrl?: string;
+}
+
+export interface SteamStats {
+  steamId: string;
+  personaName: string;
+  profileUrl: string;
+  avatarUrl?: string;
+  gameCount: number;
+  totalPlaytimeHours: number;
+  recentGames: SteamGameSummary[];
+  topGames: SteamGameSummary[];
+}
+
 export interface HomePageData {
   settings: SiteSettings | null;
   featuredProjects: Project[];
@@ -115,3 +155,4 @@ export interface HomePageData {
   featuredLinks: ResourceLink[];
   resume: ResumeDocument | null;
 }
+

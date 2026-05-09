@@ -124,7 +124,7 @@ export default function SiteLayout({
                   }
             }
             transition={{
-              duration: 24,
+              duration: 36,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -154,7 +154,7 @@ export default function SiteLayout({
                 Husain Shahid Rao
               </Link>
               <p className="mt-1 text-sm text-slate-400">
-                Portfolio, research archive, and CMS-backed knowledge base.
+                Portfolio, research, and selected work.
               </p>
             </div>
 
@@ -212,7 +212,7 @@ export default function SiteLayout({
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 0.6, ease: motionEase }}
           >
-            Built on Next.js 16, React 19, Tailwind CSS, and Sanity Studio.
+            Built with Next.js, React, Tailwind CSS, and Sanity.
           </motion.footer>
         </div>
       </div>

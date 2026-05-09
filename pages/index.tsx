@@ -68,7 +68,7 @@ export default function HomePage({
   const shouldReduceMotion = useSiteReducedMotion();
 
   return (
-    <SiteLayout description="CMS-driven portfolio with projects, research, links, and resume content.">
+    <SiteLayout description="Portfolio with projects, research, links, and resume content.">
       <section className="grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <motion.div
           className="panel px-7 py-8 sm:px-10 sm:py-10"
@@ -76,13 +76,13 @@ export default function HomePage({
           animate={shouldReduceMotion ? undefined : "visible"}
           variants={shouldReduceMotion ? undefined : createFadeUp(18)}
         >
-          <p className="eyebrow">Sanity Powered Portfolio</p>
+          <p className="eyebrow">Portfolio</p>
           <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-6xl">
-            {settings?.siteTitle || "Technical portfolio with structured content."}
+            {settings?.siteTitle || "Portfolio and selected work."}
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
             {settings?.intro ||
-              "This website is now wired to Sanity CMS so projects, research papers, resource links, and resume content can be managed from a single editorial workspace."}
+              "Projects, research, links, and resume content live here."}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -187,10 +187,10 @@ export default function HomePage({
 
       <section className="mt-16 space-y-6">
         <div>
-          <p className="eyebrow">Featured Links</p>
+          <p className="eyebrow">Links</p>
           <h2 className="section-heading">Profiles, references, and live destinations</h2>
           <p className="section-copy">
-            Important profiles and public endpoints stay close to the top so the overview acts like a concise control panel.
+            Key profiles and public links, all in one place.
           </p>
         </div>
 
@@ -208,18 +208,18 @@ export default function HomePage({
           </div>
         ) : (
           <EmptyState
-            title="No featured links published yet"
-            description="Create or feature resourceLink documents in Sanity Studio to surface key profiles and references here."
+            title="No links yet"
+            description="Add a few links in Sanity Studio and they will show up here."
           />
         )}
       </section>
 
       <section className="mt-16 space-y-6">
         <div>
-          <p className="eyebrow">Selected Work</p>
+          <p className="eyebrow">Projects</p>
           <h2 className="section-heading">Project showcases</h2>
           <p className="section-copy">
-            Featured build notes, delivery snapshots, and technical outcomes from Sanity-managed project entries.
+            Selected projects with context, links, and notes.
           </p>
         </div>
 
@@ -261,8 +261,8 @@ export default function HomePage({
           </div>
         ) : (
           <EmptyState
-            title="No projects published yet"
-            description="Create project documents in Sanity Studio to populate this section."
+            title="No projects yet"
+            description="Add project entries in Sanity Studio and they will appear here."
           />
         )}
       </section>
@@ -272,7 +272,7 @@ export default function HomePage({
           <p className="eyebrow">Publications</p>
           <h2 className="section-heading">Research papers</h2>
           <p className="section-copy">
-            Structured entries for papers, abstracts, venues, authors, and supporting links.
+            Papers, abstracts, and supporting links.
           </p>
         </div>
 
@@ -342,8 +342,8 @@ export default function HomePage({
           </div>
         ) : (
           <EmptyState
-            title="No research papers published yet"
-            description="Add researchPaper documents in Sanity Studio to render publication cards here."
+            title="No papers yet"
+            description="Add research entries in Sanity Studio and they will appear here."
           />
         )}
       </section>
@@ -356,7 +356,7 @@ export default function HomePage({
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-300">
             {data.resume?.summary ||
-              "Publish a summary, highlights, detailed experience, and an attached PDF from Sanity to keep this page current."}
+              "A short summary, key highlights, experience, and a PDF resume can live here."}
           </p>
 
           {data.resume?.skills?.length ? (
@@ -396,10 +396,10 @@ export default function HomePage({
             viewport={{ once: true, amount: 0.3 }}
             variants={shouldReduceMotion ? undefined : createFadeUp(18)}
           >
-            <p className="eyebrow">Signals Snapshot</p>
-            <h2 className="section-heading">Minimal fun stats on the overview</h2>
+            <p className="eyebrow">Stats</p>
+            <h2 className="section-heading">Overview stats</h2>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">
-              The overview only keeps a compact pulse. The full telemetry, GitHub heatmap, and problem-solving stats live on the dedicated Signals page.
+              A short summary lives here. The full GitHub and LeetCode stats are on Signals.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -447,10 +447,10 @@ export default function HomePage({
             viewport={{ once: true, amount: 0.3 }}
             variants={shouldReduceMotion ? undefined : createFadeUp(22, 0.05)}
           >
-            <p className="eyebrow">Deep Dive</p>
+            <p className="eyebrow">Signals</p>
             <h2 className="text-3xl font-semibold text-slate-50">Open the Signals page</h2>
             <p className="mt-4 text-base leading-7 text-slate-300">
-              View GitHub contribution heatmaps, repository activity, and LeetCode problem-solving breakdowns on a dedicated page built for telemetry.
+              See GitHub activity, the contribution heatmap, and LeetCode stats.
             </p>
 
             <div className="mt-6 space-y-3 text-sm text-slate-400">

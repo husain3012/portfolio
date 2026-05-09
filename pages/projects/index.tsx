@@ -20,13 +20,13 @@ export default function ProjectsPage({
   projects,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <SiteLayout title="Projects" description="Project showcase powered by Sanity CMS.">
+    <SiteLayout title="Projects" description="Projects and case studies.">
       <section className="space-y-6">
         <div>
           <p className="eyebrow">Projects</p>
           <h1 className="section-heading">Shipped work and technical case studies</h1>
           <p className="section-copy">
-            Every project card is sourced from Sanity so content, imagery, links, and long-form technical notes stay editable.
+            Project notes, images, links, and write-ups.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function ProjectsPage({
             {projects.map((project) => (
               <ContentCard
                 key={project._id}
-                eyebrow={project.featured ? "Featured Project" : "Project"}
+                eyebrow={project.featured ? "Featured" : "Project"}
                 title={project.title}
                 description={project.summary}
                 meta={[project.role, project.year].filter(Boolean).join(" · ")}
@@ -59,7 +59,7 @@ export default function ProjectsPage({
         ) : (
           <EmptyState
             title="Projects will appear here"
-            description="Publish project documents in Sanity Studio to populate this page."
+            description="Add project entries in Sanity Studio and they will appear here."
           />
         )}
       </section>

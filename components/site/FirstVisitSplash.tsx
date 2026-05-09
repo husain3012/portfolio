@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const splashSeenKey = "portfolio:first-visit-splash:v3";
-const browserVisitCountKey = "portfolio:browser-visit-count";
-const countApiUrl = "https://api.countapi.xyz/hit/husain3012-portfolio/visits";
 const goodbyeRedirectUrl = "https://pointerpointer.com/";
 const splashDurationMs = 8000;
 
@@ -11,7 +9,7 @@ type FirstVisitSplashProps = {
   children: React.ReactNode;
 };
 
-type VisitorLabel = "Global visitor" | "Browser visit";
+type VisitorLabel = "Global visitor" | "Counter status";
 
 function formatVisitCount(value: number) {
   return value.toString().padStart(3, "0");
@@ -20,8 +18,10 @@ function formatVisitCount(value: number) {
 export default function FirstVisitSplash({ children }: FirstVisitSplashProps) {
   const [isMounted, setIsMounted] = useState(false);
   const [showSplash, setShowSplash] = useState(false);
-  const [visitCount, setVisitCount] = useState(1);
-  const [visitorLabel, setVisitorLabel] = useState<VisitorLabel>("Browser visit");
+  const [isFirstSplashVisit, setIsFirstSplashVisit] = useState(false);
+  const [visitCount, setVisitCount] = useState<number | null>(null);
+  const [visitorLabel, setVisitorLabel] = useState<VisitorLabel>("Global visitor");
+  const [visitorMessage, setVisitorMessage] = useState("Fetching visitor index.");
   const [timeRemainingMs, setTimeRemainingMs] = useState(splashDurationMs);
 
   const handleEnter = () => {
@@ -41,39 +41,60 @@ export default function FirstVisitSplash({ children }: FirstVisitSplashProps) {
       return;
     }
 
-    const rawVisitCount = window.localStorage.getItem(browserVisitCountKey);
-    const nextVisitCount = Number.parseInt(rawVisitCount || "0", 10) + 1;
     const hasSeenSplash = window.localStorage.getItem(splashSeenKey) === "1";
+    const isFirstVisit = !hasSeenSplash;
 
-    window.localStorage.setItem(browserVisitCountKey, String(nextVisitCount));
-    setVisitCount(nextVisitCount);
-    setShowSplash(!hasSeenSplash);
+    setVisitCount(null);
+    setVisitorLabel("Global visitor");
+    setVisitorMessage("Fetching visitor index.");
+    setShowSplash(isFirstVisit);
+    setIsFirstSplashVisit(isFirstVisit);
 
-    if (!hasSeenSplash) {
+    if (isFirstVisit) {
       window.localStorage.setItem(splashSeenKey, "1");
     }
 
     setIsMounted(true);
+  }, []);
 
+  useEffect(() => {
+    if (!isMounted || !showSplash) {
+      return;
+    }
+
+    const method = isFirstSplashVisit ? "POST" : "GET";
     const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => controller.abort(), 2500);
+    const timeoutId = window.setTimeout(() => controller.abort(), 3000);
 
-    fetch(countApiUrl, { signal: controller.signal })
+    fetch("/api/visits", {
+      method,
+      signal: controller.signal,
+      headers: {
+        Accept: "application/json",
+      },
+    })
       .then(async (response) => {
         if (!response.ok) {
-          throw new Error(`Counter request failed: ${response.status}`);
+          throw new Error(`Visit API failed: ${response.status}`);
         }
 
-        const payload = (await response.json()) as { value?: number };
+        const payload = (await response.json()) as {
+          value?: number;
+          source?: "global" | "local-fallback";
+        };
 
         if (typeof payload.value === "number") {
           setVisitCount(payload.value);
-          setVisitorLabel("Global visitor");
+          setVisitorMessage("You are next in the global visit log.");
+          if (payload.source === "global") {
+            setVisitorLabel("Global visitor");
+          }
         }
       })
       .catch(() => {
-        setVisitCount(nextVisitCount);
-        setVisitorLabel("Browser visit");
+        setVisitCount(null);
+        setVisitorLabel("Counter status");
+        setVisitorMessage("Visitor radar is on a coffee break.");
       })
       .finally(() => {
         window.clearTimeout(timeoutId);
@@ -83,7 +104,7 @@ export default function FirstVisitSplash({ children }: FirstVisitSplashProps) {
       controller.abort();
       window.clearTimeout(timeoutId);
     };
-  }, []);
+  }, [isFirstSplashVisit, isMounted, showSplash]);
 
   useEffect(() => {
     if (!showSplash) {
@@ -165,9 +186,15 @@ export default function FirstVisitSplash({ children }: FirstVisitSplashProps) {
                       <p className="text-xs uppercase tracking-[0.28em] text-zinc-500">
                         {visitorLabel}
                       </p>
-                      <p className="mt-3 text-4xl font-semibold text-white">
-                        #{formatVisitCount(visitCount)}
-                      </p>
+                      {visitCount !== null ? (
+                        <p className="mt-3 text-4xl font-semibold text-white">
+                          #{formatVisitCount(visitCount)}
+                        </p>
+                      ) : (
+                        <p className="mt-3 max-w-sm text-base leading-7 text-zinc-400">
+                          {visitorMessage}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <p className="text-xs uppercase tracking-[0.28em] text-zinc-500">

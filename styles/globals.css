@@ -147,7 +147,7 @@ body::after {
 		height: 9rem;
 		margin-left: -4.5rem;
 		margin-top: -4.5rem;
-		animation-duration: 10s;
+		animation-duration: 14s;
 		animation-delay: -2s;
 	}
 
@@ -156,7 +156,7 @@ body::after {
 		height: 13rem;
 		margin-left: -6.5rem;
 		margin-top: -6.5rem;
-		animation-duration: 16s;
+		animation-duration: 22s;
 		animation-delay: -6s;
 	}
 
@@ -165,7 +165,7 @@ body::after {
 		height: 17.5rem;
 		margin-left: -8.75rem;
 		margin-top: -8.75rem;
-		animation-duration: 22s;
+		animation-duration: 30s;
 		animation-delay: -10s;
 	}
 
@@ -174,7 +174,7 @@ body::after {
 		height: 21rem;
 		margin-left: -10.5rem;
 		margin-top: -10.5rem;
-		animation-duration: 28s;
+		animation-duration: 38s;
 		animation-delay: -14s;
 	}
 
@@ -183,7 +183,7 @@ body::after {
 		height: 27rem;
 		margin-left: -13.5rem;
 		margin-top: -13.5rem;
-		animation-duration: 38s;
+		animation-duration: 52s;
 		animation-delay: -9s;
 	}
 
@@ -192,7 +192,7 @@ body::after {
 		height: 33rem;
 		margin-left: -16.5rem;
 		margin-top: -16.5rem;
-		animation-duration: 48s;
+		animation-duration: 66s;
 		animation-delay: -18s;
 	}
 
@@ -201,7 +201,7 @@ body::after {
 		height: 39rem;
 		margin-left: -19.5rem;
 		margin-top: -19.5rem;
-		animation-duration: 62s;
+		animation-duration: 84s;
 		animation-delay: -22s;
 	}
 

@@ -62,7 +62,7 @@ export default function ResearchDetailPage({
         </Link>
 
         <section className="panel px-7 py-8 sm:px-10 sm:py-10">
-          <p className="eyebrow">Research Paper</p>
+          <p className="eyebrow">Paper</p>
           <h1 className="mt-2 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
             {paper.title}
           </h1>
@@ -87,7 +87,7 @@ export default function ResearchDetailPage({
           <div className="mt-8 flex flex-wrap gap-3">
             {paper.paperUrl ? (
               <a href={paper.paperUrl} target="_blank" rel="noopener noreferrer" className="action-link">
-                Read Publication
+                Read paper
               </a>
             ) : null}
             {paper.paperFileUrl ? (
@@ -97,7 +97,7 @@ export default function ResearchDetailPage({
             ) : null}
             {paper.codeUrl ? (
               <a href={paper.codeUrl} target="_blank" rel="noopener noreferrer" className="muted-link">
-                View Code
+                Code
               </a>
             ) : null}
           </div>

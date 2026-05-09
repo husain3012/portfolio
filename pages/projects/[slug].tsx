@@ -59,7 +59,7 @@ export default function ProjectDetailPage({
         </Link>
 
         <section className="panel px-7 py-8 sm:px-10 sm:py-10">
-          <p className="eyebrow">Project Case Study</p>
+          <p className="eyebrow">Project</p>
           <h1 className="mt-2 max-w-4xl text-4xl font-semibold tracking-tight text-slate-50 sm:text-5xl">
             {project.title}
           </h1>

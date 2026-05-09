@@ -20,13 +20,13 @@ export default function ResearchPage({
   papers,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <SiteLayout title="Research" description="Research papers managed in Sanity CMS.">
+    <SiteLayout title="Research" description="Research papers and supporting material.">
       <section className="space-y-6">
         <div>
           <p className="eyebrow">Research</p>
           <h1 className="section-heading">Papers, abstracts, and supporting material</h1>
           <p className="section-copy">
-            This section exposes structured publication metadata, long-form body content, and external references directly from Sanity.
+            Papers, abstracts, and links.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function ResearchPage({
             {papers.map((paper) => (
               <ContentCard
                 key={paper._id}
-                eyebrow={paper.featured ? "Featured Paper" : "Research Paper"}
+                eyebrow={paper.featured ? "Featured" : "Paper"}
                 title={paper.title}
                 description={paper.abstract}
                 meta={
@@ -77,7 +77,7 @@ export default function ResearchPage({
         ) : (
           <EmptyState
             title="Research papers will appear here"
-            description="Create researchPaper documents in Sanity Studio to publish publication pages."
+            description="Add research entries in Sanity Studio and they will appear here."
           />
         )}
       </section>

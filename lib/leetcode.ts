@@ -1,4 +1,5 @@
 import type { ResourceLink } from "../sanity/lib/types";
+import { env } from "../sanity/env";
 
 type LeetCodeProfileResponse = {
   ranking: number;
@@ -37,7 +38,7 @@ export type LeetCodeStats = {
   totalSubmissions: number;
 };
 
-const defaultLeetCodeUsername = process.env.LEETCODE_USERNAME || "husain3012";
+const defaultLeetCodeUsername = env.leetcode.username;
 
 function getBucket(
   buckets: LeetCodeSubmissionBucket[],

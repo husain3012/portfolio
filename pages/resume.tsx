@@ -20,7 +20,7 @@ export default function ResumePage({
   resume,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <SiteLayout title="Resume" description="Resume and CV content from Sanity CMS.">
+    <SiteLayout title="Resume" description="Resume and CV.">
       {resume ? (
         <div className="space-y-8">
           <section className="panel px-7 py-8 sm:px-10 sm:py-10">
@@ -95,7 +95,7 @@ export default function ResumePage({
       ) : (
         <EmptyState
           title="Resume content will appear here"
-          description="Create the singleton Resume document in Sanity Studio to publish your CV, highlights, and PDF attachment."
+          description="Add your resume in Sanity Studio and it will appear here."
         />
       )}
     </SiteLayout>

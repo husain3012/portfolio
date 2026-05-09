@@ -6,6 +6,8 @@ type GitHubUserResponse = {
   public_repos: number;
 };
 
+import { env } from "../sanity/env";
+
 type GitHubRepoResponse = {
   name: string;
   html_url: string;
@@ -37,8 +39,8 @@ export type GitHubStats = {
 };
 
 const githubApiBase = "https://api.github.com";
-const defaultUsername = process.env.GITHUB_USERNAME || "husain3012";
-const githubToken = process.env.GITHUB_TOKEN;
+const defaultUsername = env.github.username;
+const githubToken = env.github.token || undefined;
 
 async function fetchGitHubJson<T>(path: string): Promise<T | null> {
   const response = await fetch(`${githubApiBase}${path}`, {
